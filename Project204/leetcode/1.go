@@ -1,4 +1,6 @@
 package leetcode
+
+/*1 easy*/
 func twoSum(nums []int, target int) []int {
 	var i,j int
 	for i=0;i<len(nums);i++{
