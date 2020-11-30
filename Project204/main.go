@@ -1,18 +1,25 @@
 package main
 
-import "fmt"
+import (
+	"./mystl"
+	"fmt"
+)
+
+type fuck struct{
+
+}
+
 
 func main(){
-	var tmp []func()()=make([]func()(),0,3)
-	for i:=0;i<3;i++{
-		var b int=0
-		var c func()=func()(){
-			fmt.Println(b)
-		}
-		tmp=append(tmp,c)
-		fmt.Printf("%x  %x\n",&i,&b)
-	}
-	panic("")
-	
+	var a *mystl.Vector=new(mystl.Vector)
+	a.PushBack(0,1,2,3,4,5,6,7,8,9)
+	fmt.Println(a)
+	var itr mystl.Iterator =a.Iterator(5)
+	fmt.Println(itr.This())//5
+	fmt.Println(itr.Next())//6
+	fmt.Println(itr.This())//6
+	fmt.Println(itr.Back())//5
+	fmt.Println(itr.Back())//4
+	fmt.Printf("%s\n",5)
 
 }
