@@ -45,11 +45,13 @@ func (this *Vector)PushBack(x ...interface{}){
 	}
 }
 
+//todo implement
 /*iterator insert(iterator it,const T& x)*/
 func (this *Vector) PushBackSingleByIterator(){
 
 }
 
+//todo implement
 func(this *Vector)PushBackMultipulByIterator(){
 
 }
