@@ -18,22 +18,6 @@ func (this *Vector)init(){
 	}
 }
 
-//return a iterator of the vector
-//if the vector is modified,then the use of iterator would be UNSAFE
-func (this *Vector)Iterator(pos int)Iterator{
-	var x=pos
-	var ptr *[]interface{}=&(this.v)
-	return func(op Operation)interface{}{
-		switch(op){
-		case NEXT:
-			x++
-		case BACK:
-			x--
-		}
-		return (*ptr)[x]
-	}
-
-}
 
 //=====================INSERT=================================
 
@@ -45,18 +29,22 @@ func (this *Vector)PushBack(x ...interface{}){
 	}
 }
 
-//todo implement
-/*iterator insert(iterator it,const T& x)*/
-func (this *Vector) PushBackSingleByIterator(){
-
+func(this *Vector)Insert(pos int,x interface{}){
+	this.init()
+	if pos<0||pos>len(this.v){
+		panic(fmt.Sprintf("at:index out of bounds:%d\n",pos))
+	}
+	this.v=append(this.v,x)
+	for i:=len(this.v)-2;i>=pos;i--{
+		this.v[i+1]=this.v[i]
+	}
+	this.v[pos]=x
 }
 
-//todo implement
-func(this *Vector)PushBackMultipulByIterator(){
 
-}
 
 func (this *Vector)String()string{
+	this.init()
 	var buf *bytes.Buffer=new(bytes.Buffer)
 	buf.WriteString("[")
 	for index,obj:=range this.v{
@@ -76,6 +64,52 @@ func (this *Vector)String()string{
 		}
 	}
 	return buf.String()
+}
+
+//=====================QUERY=================================
+func (this *Vector)at(pos int)interface{}{
+	this.init()
+	if pos<0||pos>=len(this.v){
+		panic(fmt.Sprintf("at:index out of bounds:%d\n",pos))
+	}
+	return this.v[pos]
+}
+
+func (this *Vector)front()interface{}{
+	this.init()
+	if len(this.v)==0{
+		panic("front: size of vector is 0\n")
+	}
+	return this.v[0]
+}
+
+func (this *Vector)back()interface{}{
+	this.init()
+	if len(this.v)==0{
+		panic("back: size of vector is 0\n")
+	}
+	return this.v[len(this.v)-1]
+}
+
+//=========================update====================
+
+func (this *Vector)set(pos int,x interface{}){
+	this.init()
+	if pos<0||pos>=len(this.v){
+		panic(fmt.Sprintf("at:index out of bounds:%d\n",pos))
+	}
+	this.v[pos]=x
+}
+
+//========================delete=====================
+func (this *Vector)delete(pos int){
+	this.init()
+	if pos<0||pos>=len(this.v){
+		panic(fmt.Sprintf("at:index out of bounds:%d\n",pos))
+	}
+	copy(this.v[pos:],this.v[pos+1:])
+	this.v= this.v[0:len(this.v)-1]
+
 }
 
 
