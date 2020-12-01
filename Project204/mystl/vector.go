@@ -91,6 +91,15 @@ func (this *Vector)back()interface{}{
 	return this.v[len(this.v)-1]
 }
 
+func (this *Vector)empty()bool{
+	this.init()
+	return len(this.v)==0
+}
+
+func (this *Vector)size()int{
+	this.init()
+	return len(this.v)
+}
 //=========================update====================
 
 func (this *Vector)set(pos int,x interface{}){
@@ -102,15 +111,38 @@ func (this *Vector)set(pos int,x interface{}){
 }
 
 //========================delete=====================
-func (this *Vector)delete(pos int){
+func (this *Vector)erase(pos int){
 	this.init()
 	if pos<0||pos>=len(this.v){
 		panic(fmt.Sprintf("at:index out of bounds:%d\n",pos))
 	}
-	copy(this.v[pos:],this.v[pos+1:])
-	this.v= this.v[0:len(this.v)-1]
+	if(pos==0){
+		this.v=this.v[1:len(this.v)]
+	}else if(pos==len(this.v)-1){
+		this.v=this.v[:len(this.v)-1]
+	}else{
+		copy(this.v[pos:],this.v[pos+1:])
+		this.v= this.v[0:len(this.v)-1]
+	}
 
 }
+
+func (this *Vector)PopBack(){
+	this.init()
+	if len(this.v)==0{
+		panic("back: size of vector is 0\n")
+	}
+	this.v=this.v[:len(this.v)-1]
+}
+
+func(this *Vector) clear(){
+	this.init()
+	this.v=this.v[0:0]
+}
+
+
+
+
 
 
 
