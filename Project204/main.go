@@ -1,16 +1,14 @@
 package main
 
-import "fmt"
+import (
+	"./leetcode"
+	"fmt"
+)
 
-func main(){
-	/*var a *mystl.Vector=new(mystl.Vector)
-	a.PushBack(0,1,2,3)
-	fmt.Println(a)
-	a.Insert(4,5)
-	fmt.Println(a)*/
-	var a []int=[]int{1,2,3,4,5}
-	copy(a[1:],a[0:])
-	fmt.Println(a)
-
+func main() {
+	var a []int = []int{269826447, 974181916, 225871443, 189215924, 664652743, 592895362, 754562271, 335067223, 996014894, 510353008, 48640772, 228945137}
+	var b = 3
+	var r = leetcode.MaxDistance(a, b)
+	fmt.Println(r)
 
 }
