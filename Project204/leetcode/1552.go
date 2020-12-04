@@ -19,11 +19,11 @@ func (this sortarray) Swap(i, j int) {
 }
 
 /*
-In universe Earth C-137, Rick discovered a special form of magnetic force between two balls if they are put in his new invented basket. Rick has n empty baskets, the ith basket is at position[i], Morty has m balls and needs to distribute the balls into the baskets such that the minimum magnetic force between any two balls is maximum.
+In universe Earth C-137, Rick discovered a special form of magnetic force between two balls if they are put in his new invented basket. Rick has n empty baskets, the ith basket is at position[i], Morty has m balls and needs to distribute the balls into the baskets such that the minimum magnetic force between any two balls is maximum.
 
-Rick stated that magnetic force between two different balls at positions x and y is |x - y|.
+Rick stated that magnetic force between two different balls at positions x and y is |x - y|.
 
-Given the integer array position and the integer m. Return the required force.
+Given the integer array position and the integer m. Return the required force.
 
 来源：力扣（LeetCode）
 链接：https://leetcode-cn.com/problems/magnetic-force-between-two-balls
@@ -59,3 +59,5 @@ func testNumber(position []int, m int, l int) bool {
 	}
 	return m == 0
 }
+
+/*思路 在给定区间的整数域里二分查找*/
