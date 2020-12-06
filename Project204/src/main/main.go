@@ -1,7 +1,7 @@
 package main
 
 import (
-	"./leetcode"
+	"leetcode"
 	"fmt"
 )
 
